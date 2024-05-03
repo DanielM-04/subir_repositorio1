@@ -13,6 +13,7 @@ $query=mysqli_query($con,$select);
     <title>Formulario</title>
 </head>
 <body>
+    
     <form action="usuarios.php" method="POST">
     Cedula: <input type="text" name="cedula" placeholder="Digite su cédula" maxlength="10" required> </p>
     <p>Nombre: <input type="text" name="nombre" placeholder="Digite su Nombre" required> </p>
@@ -21,11 +22,12 @@ $query=mysqli_query($con,$select);
     <input type="submit" value="ingresar">
 
     </form>
-
+    
     <div class="tabla">
     <table>
         <thead>
             <tr>
+                <p>Hola mundo</p>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
