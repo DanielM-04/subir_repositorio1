@@ -27,7 +27,6 @@ $query=mysqli_query($con,$select);
     <table>
         <thead>
             <tr>
-                <p>Hola mundo</p>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
