@@ -10,45 +10,50 @@ $query=mysqli_query($con,$select);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stilos.css">   
     <title>Formulario</title>
 </head>
 <body>
+   <div class="container">
+   <div class="formulario">
+        
+        <form action="usuarios.php" method="POST">
+        Cedula: <input type="text" name="cedula" placeholder="Digite su cédula" maxlength="10" required> </p>
+        <p>Nombre: <input type="text" name="nombre" placeholder="Digite su Nombre" required> </p>
+        <p>Apellido: <input type="text" name="apellido" placeholder="Digite su Apellido" required> </p>
+        <p>Ciudad: <input type="text" name="ciudad" placeholder="Digite la Ciudad" required> </p>
+        <input type="submit" value="INGRESAR">
     
-    <form action="usuarios.php" method="POST">
-    Cedula: <input type="text" name="cedula" placeholder="Digite su cédula" maxlength="10" required> </p>
-    <p>Nombre: <input type="text" name="nombre" placeholder="Digite su Nombre" required> </p>
-    <p>Apellido: <input type="text" name="apellido" placeholder="Digite su Apellido" required> </p>
-    <p>Ciudad: <input type="text" name="ciudad" placeholder="Digite la Ciudad" required> </p>
-    <input type="submit" value="ingresar">
-
-    </form>
-    
-    <div class="tabla">
-    <table>
-        <thead>
+        </form>
+        </div>
+        
+        <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Ciudad</th>
+                    
+                </tr>
+            </thead>
+            <?php while($row=mysqli_fetch_array($query)):?>
+            <tbody>
             <tr>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Ciudad</th>
-                <th></th>
-                <th></th>
+                <td><?=$row['cedula'] ?></td>
+                <td><?=$row['nombre'] ?></td>
+                <td><?=$row['apellido'] ?></td>
+                <td><?=$row['ciudad'] ?></td>
+                <td class="no-border"><a href="update.php?id=<?=$row['id'] ?>"><img src="imagenes/im1.jpg" alt="editar" class="editar"></a></td>
+                <td class="no-border"><a href="eliminar.php?id=<?=$row['id'] ?>"><img src="imagenes/bor.png" alt="borrar" class="editar"></a></td>
             </tr>
-        </thead>
-        <?php while($row=mysqli_fetch_array($query)):?>
-        <tbody>
-            <th> <?=$row['cedula'] ?></th>
-            <th> <?=$row['nombre'] ?></th>
-            <th> <?=$row['apellido'] ?></th>
-            <th> <?=$row['ciudad'] ?></th>
-            <th></th>
-            <th><a href="update.php?id=<?=$row['id'] ?>">Editar</a></th>
-            <th><a href="eliminar.php?id=<?=$row['id'] ?>">Eliminar</a></th>
-        <?php endwhile;?>
-        </tbody>
-    </table>
-    </div>
-    
+            <?php endwhile;?>
+            </tbody>
+        </table>
+        </div>
+        
+   </div>
 </body>
 
 </html>
